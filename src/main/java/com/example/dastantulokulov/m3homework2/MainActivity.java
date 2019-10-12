@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     float Value1, Value2;
-    boolean PLUS, MINUS, PERCENT, DIVIDE ;
+    boolean PLUS, MINUS, PERCENT, DIVIDE;
 
     String resultText;
     ArrayList<String> history = new ArrayList<>();
@@ -199,8 +199,8 @@ public class MainActivity extends AppCompatActivity {
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calculation calculation = new Calculation();
                 Value2 = Float.parseFloat(editText.getText() + "");
-
                 if (PLUS == true) {
                     editText.setText(Value1 + Value2 + "");
                     resultText = editText.getText().toString();
@@ -229,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                     history.add(resultText);
                     DIVIDE = false;
                 }
+
                 //adapter.addElement("textKey");
             }
         });
@@ -259,11 +260,10 @@ public class MainActivity extends AppCompatActivity {
 //        operation = "+";
 
         Intent intent = new Intent(this, Main2Activity.class);
-        intent.putExtra("textKey",history);
+        intent.putExtra("textKey", history);
         startActivity(intent);
 
     }
-
 
 
 //    @Override

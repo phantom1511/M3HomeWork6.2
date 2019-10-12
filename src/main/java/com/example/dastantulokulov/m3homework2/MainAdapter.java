@@ -58,12 +58,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements
         String string = data.get(position);
         Intent intent = new Intent(activity, Main3Activity.class );
 
+
         Calculation calculation = new Calculation();
-        calculation.Plus = "+";
-        calculation.Minus = "-";
-        calculation.Percent = "%";
-        calculation.Divide = "/";
-        calculation.Equal = "=";
+        calculation.first= "";
+        calculation.second = "";
+        calculation.oparation ="";
+        calculation.result = "";
 
         ArrayList<Calculation> calculations = new ArrayList<>();
 
