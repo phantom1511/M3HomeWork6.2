@@ -30,7 +30,7 @@ public class Main3Activity extends AppCompatActivity {
         ArrayList<Calculation> calculations = (ArrayList<Calculation>) intent.getSerializableExtra("textKey");
         //String s = calculations.get(0).first + calculations.get(0).oparation + calculations.get(0).second + calculations.get(0).result;
 
-        calculations.get(history.size()).first;
+        calculations.get().first;
         calculations.get().second;
         calculations.get().oparation;
         calculations.get().result;

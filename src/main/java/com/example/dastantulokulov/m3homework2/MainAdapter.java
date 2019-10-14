@@ -67,7 +67,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements
 
         ArrayList<Calculation> calculations = new ArrayList<>();
 
-        intent.putExtra("textKey", calculations);
+        intent.putExtra("textKey", string);
         activity.startActivity(intent);
     }
 }
