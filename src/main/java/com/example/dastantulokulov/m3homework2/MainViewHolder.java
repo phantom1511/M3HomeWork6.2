@@ -23,8 +23,8 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void onBind(String string, int position) {
-        textView.setText(string);
+    public void onBind(String calculation, int position) {
+        textView.setText(String.valueOf(calculation));
         this.position = position;
     }
 

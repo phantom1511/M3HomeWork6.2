@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     boolean PLUS, MINUS, PERCENT, DIVIDE;
 
     String resultText;
-    ArrayList<String> history = new ArrayList<>();
+    ArrayList<Calculation> history = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,7 +204,11 @@ public class MainActivity extends AppCompatActivity {
                 if (PLUS == true) {
                     editText.setText(Value1 + Value2 + "");
                     resultText = editText.getText().toString();
-                    history.add(resultText);
+                    calculation.first = String.valueOf(Value1);
+                    calculation.second = String.valueOf(Value2);
+                    calculation.oparation = "+";
+                    calculation.result = resultText;
+                    history.add(calculation);
                     PLUS = false;
                 }
 
@@ -212,21 +216,33 @@ public class MainActivity extends AppCompatActivity {
                 if (MINUS == true) {
                     editText.setText(Value1 - Value2 + "");
                     resultText = editText.getText().toString();
-                    history.add(resultText);
+                    calculation.first = String.valueOf(Value1);
+                    calculation.second = String.valueOf(Value2);
+                    calculation.oparation = "-";
+                    calculation.result = resultText;
+                    history.add(calculation);
                     MINUS = false;
                 }
 
                 if (PERCENT == true) {
                     editText.setText(Value1 * Value2 / 100 + "");
                     resultText = editText.getText().toString();
-                    history.add(resultText);
+                    calculation.first = String.valueOf(Value1);
+                    calculation.second = String.valueOf(Value2);
+                    calculation.oparation = "%";
+                    calculation.result = resultText;
+                    history.add(calculation);
                     PERCENT = false;
                 }
 
                 if (DIVIDE == true) {
                     editText.setText(Value1 / Value2 + "");
                     resultText = editText.getText().toString();
-                    history.add(resultText);
+                    calculation.first = String.valueOf(Value1);
+                    calculation.second = String.valueOf(Value2);
+                    calculation.oparation = "/";
+                    calculation.result = resultText;
+                    history.add(calculation);
                     DIVIDE = false;
                 }
 

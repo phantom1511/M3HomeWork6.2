@@ -31,7 +31,8 @@ public class Main2Activity extends AppCompatActivity {
         //resultText = intent.getStringExtra("textKey");
         //textView.setText(resultText);
 
-        ArrayList<String> data = intent.getStringArrayListExtra("textKey");
+        ArrayList<Calculation> data = (ArrayList<Calculation>) intent.getSerializableExtra("textKey");
+       // ArrayList<String> data = intent.getStringArrayListExtra("textKey");
 
         recyclerView = findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

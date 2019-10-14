@@ -13,11 +13,12 @@ import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements onViewHolderListener{
 
-    ArrayList<String> data;
+    ArrayList<Calculation> data;
     Main2Activity activity;
 
-    public MainAdapter(ArrayList<String> data) {
+    public MainAdapter(ArrayList<Calculation> data) {
         this.data = data;
+        //this.data = data;
         //data = new ArrayList<>();
         /*for (int i = 0; i < 200; i++) {
             data.add("Element N " + i);
@@ -25,9 +26,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements
 
     }
 
-    public void addElement(String string) {
+    public void addElement(Calculation calculation) {
         //string = string + " " + data.size();
-        data.add(string);
+        data.add(calculation);
         notifyDataSetChanged();
     }
 
@@ -43,7 +44,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
-        holder.onBind(data.get(position), (position));
+        holder.onBind(data.get(position).result, (position));
 //        String text = data.get(position);
 //        holder.textView.setText(text);
     }
@@ -55,19 +56,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> implements
 
     @Override
     public void onClick(int position) {
-        String string = data.get(position);
+        Calculation calculation = data.get(position);
         Intent intent = new Intent(activity, Main3Activity.class );
 
 
-        Calculation calculation = new Calculation();
-        calculation.first= "";
-        calculation.second = "";
-        calculation.oparation ="";
-        calculation.result = "";
+//        Calculation calculation1 = new Calculation();
+//        calculation.first= "";
+//        calculation.second = "";
+//        calculation.oparation ="";
+//        calculation.result = "";
 
-        ArrayList<Calculation> calculations = new ArrayList<>();
+//        data.get(0).first = "";
+//        data.get(0).second = "";
+//        data.get(0).oparation = "";
+//        data.get(0).result = "";
 
-        intent.putExtra("textKey", string);
+        //ArrayList<Calculation> calculations = new ArrayList<>();
+
+        intent.putExtra("textKey", data);
         activity.startActivity(intent);
     }
 }
