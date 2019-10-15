@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Main3Activity extends AppCompatActivity {
     TextView textView;
     ArrayList<Calculation> history;
+    Calculation calculation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,8 @@ public class Main3Activity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView3);
         Intent intent = getIntent();
-        history = (ArrayList<Calculation>) intent.getSerializableExtra("textKey");
+//        history = (ArrayList<Calculation>) intent.getSerializableExtra("textKey");
+        calculation = (Calculation) intent.getSerializableExtra("textKey");
 
 //        ArrayList<Calculation> calculations = (ArrayList<Calculation>) intent.getSerializableExtra("textKey");
 //        String s = calculations.get().first + calculations.get().oparation + calculations.get().second + calculations.get().result;
@@ -32,10 +34,10 @@ public class Main3Activity extends AppCompatActivity {
 //        calculations.get().second;
 //        calculations.get().oparation;
 //        calculations.get().result;
-        Log.d("ron", history.get(0).first);
-        textView.setText(history.get(0).first + " " + history.get(0).oparation + " " + history.get(0).second + " = " + history.get(0).result);
+//        Log.d("ron", history.get(0).first);
 
         TextView textView = findViewById(R.id.textView3);
+        textView.setText(calculation.first + " " + calculation.oparation + " " + calculation.second + " = " + calculation.result);
         //textView.setText(String.valueOf(calculation));
 
 
