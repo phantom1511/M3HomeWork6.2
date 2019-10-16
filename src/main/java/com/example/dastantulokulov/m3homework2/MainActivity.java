@@ -2,21 +2,48 @@ package com.example.dastantulokulov.m3homework2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IButton{
+
+    FirstBtnLayoutFragment firstBtnLayoutFragment;
+    RecyclerViewFragment recyclerViewFragment;
+    /*SecondBtnLayoutFragment secondBtnLayoutFragment;
+    ThirdBtnLayoutFragment thirdBtnLayoutFragment;
+    FourthBtnLayoutFragment fourthBtnLayoutFragment;
+    FifthBtnLayoutFragment fifthBtnLayoutFragment;
+    EditTextFragment editTextFragment;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        firstBtnLayoutFragment = (FirstBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_first_btn_layout);
+        secondBtnLayoutFragment = (SecondBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_second_btn_layout);
+        thirdBtnLayoutFragment = (ThirdBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_third_btn_layout);
+        fourthBtnLayoutFragment = (FourthBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_fourth_btn_layout);
+        fifthBtnLayoutFragment = (FifthBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_fifth_btn_layout);
+        editTextFragment = (EditTextFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_edit_layout);
+    }
+    @Override
+    public void getHistory() {
+
+    }*/
+
+
 
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus, btnP, btnDiv, btnEqual, btnDot, btnC;
     EditText editText;
@@ -33,12 +60,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        firstBtnLayoutFragment = (FirstBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_first_btn_layout);
 
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-
-//        adapter = new MainAdapter();
-//        recyclerView.setAdapter(adapter);
+        firstBtnLayoutFragment.listener = this;
 
         editText = findViewById(R.id.numField);
         editText.addTextChangedListener(new TextWatcher() {
@@ -205,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                     resultText = editText.getText().toString();
                     calculation.first = String.valueOf(Value1);
                     calculation.second = String.valueOf(Value2);
-                    calculation.oparation = "+";
+                    calculation.operation = "+";
                     calculation.result = resultText;
                     history.add(calculation);
                     PLUS = false;
@@ -217,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
                     resultText = editText.getText().toString();
                     calculation.first = String.valueOf(Value1);
                     calculation.second = String.valueOf(Value2);
-                    calculation.oparation = "-";
+                    calculation.operation = "-";
                     calculation.result = resultText;
                     history.add(calculation);
                     MINUS = false;
@@ -228,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
                     resultText = editText.getText().toString();
                     calculation.first = String.valueOf(Value1);
                     calculation.second = String.valueOf(Value2);
-                    calculation.oparation = "%";
+                    calculation.operation = "%";
                     calculation.result = resultText;
                     history.add(calculation);
                     PERCENT = false;
@@ -239,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
                     resultText = editText.getText().toString();
                     calculation.first = String.valueOf(Value1);
                     calculation.second = String.valueOf(Value2);
-                    calculation.oparation = "/";
+                    calculation.operation = "/";
                     calculation.result = resultText;
                     history.add(calculation);
                     DIVIDE = false;
@@ -259,21 +283,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getHistory(View view) {
-
-//        String operation;
-//
-//        if (PLUS){
-//            operation = "+";
-//        }else if (PERCENT){
-//            operation = "%";
-//        }else if (MINUS){
-//            operation = "-";
-//        }else if (DIVIDE){
-//            operation = "/";
-//        }
-//
-//        operation = "+";
-
         Intent intent = new Intent(this, Main2Activity.class);
         intent.putExtra("textKey", history);
         startActivity(intent);
@@ -281,38 +290,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    @Override
-//    public void onBackPressed() {
-//        Intent intent = new Intent();
-//        setResult(RESULT_OK, intent);
-//        finish();
-//    }
-
-
-
-    /*public void addElementToList(View view) {
-        Value2 = Float.parseFloat(editText.getText() + "");
-
-        if (PLUS == true) {
-            editText.setText(Value1 + Value2 + "");
-            PLUS = false;
-        }
-
-
-        if (MINUS == true) {
-            editText.setText(Value1 - Value2 + "");
-            MINUS = false;
-        }
-
-        if (PERCENT == true) {
-            editText.setText(Value1 * Value2 / 100 + "");
-            PERCENT = false;
-        }
-
-        if (DIVIDE == true) {
-            editText.setText(Value1 / Value2 + "");
-            DIVIDE = false;
-        }
-    }*/
-
+    @Override
+    public void getHistory() {
+        firstBtnLayoutFragment.btnHistory.findViewById(R.id.recyclerView);
+    }
 }

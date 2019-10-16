@@ -5,6 +5,6 @@ import java.io.Serializable;
 public class Calculation implements Serializable {
     String first;
     String second;
-    String oparation;
+    String operation;
     String result;
 }
