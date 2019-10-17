@@ -47,14 +47,14 @@ public class FirstBtnLayoutFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        btnHistory = getView().findViewById(R.id.fragment_first_btn_layout);
+        //btnHistory = getView().findViewById(R.id.fragment_first_btn_layout);
 
-        btnHistory.setOnClickListener(new View.OnClickListener() {
+        /*btnHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.getHistory();
             }
-        });
+        });*/
 
     }
 

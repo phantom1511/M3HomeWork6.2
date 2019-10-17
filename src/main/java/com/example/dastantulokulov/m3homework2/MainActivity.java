@@ -12,6 +12,8 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements IButton{
 
     FirstBtnLayoutFragment firstBtnLayoutFragment;
     RecyclerViewFragment recyclerViewFragment;
+    ButtonsFragment buttonsFragment;
     /*SecondBtnLayoutFragment secondBtnLayoutFragment;
     ThirdBtnLayoutFragment thirdBtnLayoutFragment;
     FourthBtnLayoutFragment fourthBtnLayoutFragment;
@@ -44,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements IButton{
     }*/
 
 
-
-    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus, btnP, btnDiv, btnEqual, btnDot, btnC;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnPlus, btnMinus, btnP, btnDiv, btnEqual, btnDot, btnC, historyBtn;
     EditText editText;
 
 
@@ -60,9 +62,16 @@ public class MainActivity extends AppCompatActivity implements IButton{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        firstBtnLayoutFragment = (FirstBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_first_btn_layout);
+        //firstBtnLayoutFragment = (FirstBtnLayoutFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_first_btn_layout);
 
-        firstBtnLayoutFragment.listener = this;
+        //firstBtnLayoutFragment.listener = this;
+
+        buttonsFragment = (ButtonsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_buttons);
+        recyclerViewFragment = (RecyclerViewFragment) getSupportFragmentManager().findFragmentById(R.id.recyclerView);
+
+
+        buttonsFragment.listener = this;
+
 
         editText = findViewById(R.id.numField);
         editText.addTextChangedListener(new TextWatcher() {
@@ -282,16 +291,55 @@ public class MainActivity extends AppCompatActivity implements IButton{
         });
     }
 
-    public void getHistory(View view) {
+    /*public void getHistory(View view) {
         Intent intent = new Intent(this, Main2Activity.class);
         intent.putExtra("textKey", history);
         startActivity(intent);
 
-    }
+    }*/
+
+
+
+//    public void getHistory(View view) {
+//        Fragment fragment = null;
+//
+//        switch (view.getId()) {
+//            case R.id.historyBtn:
+//                fragment = new RecyclerViewFragment();
+//                break;
+//            case R.id.calculatorBtn:
+//                fragment = new ButtonsFragment();
+//                break;
+//        }
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.recyclerView, fragment);
+//        fragmentTransaction.commit();
+//    }
 
 
     @Override
     public void getHistory() {
-        firstBtnLayoutFragment.btnHistory.findViewById(R.id.recyclerView);
+        showHistory(RecyclerViewFragment.instance(this));
     }
+
+    @Override
+    public void calculate() {
+        showCalculator(new ButtonsFragment());
+    }
+
+    public void showHistory(Fragment fragment){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.commit();
+    }
+
+    public void showCalculator(Fragment fragment){
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.recyclerView, fragment);
+        transaction.commit();
+    }
+
 }

@@ -13,5 +13,4 @@
         android:name="com.example.dastantulokulov.m3homework2.RecyclerViewFragment"
         tools:layout="@layout/fragment_recycler_view"/>
 
-
 </android.support.constraint.ConstraintLayout>
