@@ -32,16 +32,16 @@ public class ButtonsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_buttons, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        btnHistory = getView().findViewById(R.id.historyBtn);
-
-        btnHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.getHistory();
-            }
-        });
-    }
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        btnHistory = getView().findViewById(R.id.historyBtn);
+//
+//        btnHistory.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                listener.getHistory();
+//            }
+//        });
+//    }
 }

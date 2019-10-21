@@ -19,14 +19,14 @@ public class RecyclerViewFragment extends Fragment {
     Button calculate;
     IButton listener;
 
-    static public ButtonsFragment instance(IButton listener){
-        ButtonsFragment fragment = new ButtonsFragment();
-        fragment.listener = listener;
-        return fragment;
-    }
+//    static public ButtonsFragment instance(IButton listener){
+//        ButtonsFragment fragment = new ButtonsFragment();
+//        fragment.listener = listener;
+//        return fragment;
+//    }
 
 
-    private RecyclerViewFragment() {
+    public RecyclerViewFragment() {
         // Required empty public constructor
     }
 
@@ -36,19 +36,5 @@ public class RecyclerViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_recycler_view, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        calculate = getView().findViewById(R.id.calculatorBtn);
-
-        calculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.calculate();
-            }
-        });
     }
 }

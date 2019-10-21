@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements IButton{
+public class MainActivity extends AppCompatActivity{
 
     FirstBtnLayoutFragment firstBtnLayoutFragment;
     RecyclerViewFragment recyclerViewFragment;
@@ -67,10 +67,10 @@ public class MainActivity extends AppCompatActivity implements IButton{
         //firstBtnLayoutFragment.listener = this;
 
         buttonsFragment = (ButtonsFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_buttons);
-        recyclerViewFragment = (RecyclerViewFragment) getSupportFragmentManager().findFragmentById(R.id.recyclerView);
+        recyclerViewFragment = (RecyclerViewFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_recycler_view);
 
 
-        buttonsFragment.listener = this;
+//        buttonsFragment.listener = this;
 
 
         editText = findViewById(R.id.numField);
@@ -291,12 +291,12 @@ public class MainActivity extends AppCompatActivity implements IButton{
         });
     }
 
-    /*public void getHistory(View view) {
+    public void getHistory(View view) {
         Intent intent = new Intent(this, Main2Activity.class);
         intent.putExtra("textKey", history);
         startActivity(intent);
 
-    }*/
+    }
 
 
 
@@ -318,28 +318,17 @@ public class MainActivity extends AppCompatActivity implements IButton{
 //    }
 
 
-    @Override
-    public void getHistory() {
-        showHistory(RecyclerViewFragment.instance(this));
-    }
-
-    @Override
-    public void calculate() {
-        showCalculator(new ButtonsFragment());
-    }
-
-    public void showHistory(Fragment fragment){
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.commit();
-    }
-
-    public void showCalculator(Fragment fragment){
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.recyclerView, fragment);
-        transaction.commit();
-    }
-
+//    @Override
+//    public void getHistory() {
+//        showHistory(new RecyclerViewFragment());
+//        //showHistory(RecyclerViewFragment.instance(this));
+//    }
+//
+//    public void showHistory(Fragment fragment){
+//
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.container, fragment);
+//        transaction.commit();
+//    }
 }
